@@ -28,21 +28,20 @@ int handle_client(int client_fd){
 
         for (int i = 0; i < client_pool.size(); i++){
             cout << client_pool[i] << endl;
-            
-            ssize_t bytes_sent = send(client_pool[i], buffer, bytes_received, 0);
-            if (bytes_sent < 0) {
-                cerr << "Error al enviar datos al socket" << endl;
-                return 1;
+
+            if (client_pool[i] != client_fd){
+                ssize_t bytes_sent = send(client_pool[i], buffer, bytes_received, 0);
+                if (bytes_sent < 0) {
+                    cerr << "Error al enviar datos al socket" << endl;
+                    return 1;
+                }
             }
         }
-
-        
     }
     close(client_fd);
 }
 
 int main(){
-    
     int server_socket = socket(AF_INET, SOCK_STREAM, 0);
     if (server_socket == -1) {
         cerr << "Error al crear el socket" << endl;
