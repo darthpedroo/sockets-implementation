@@ -22,7 +22,7 @@ int handle_client(int client_fd){
             cerr << "Error al recibir datos del socket" << endl;
             return 1;
         }
-
+        
         cout << "Mensaje recibido del cliente: " << string(buffer, bytes_received) << endl;
 
         for (int i = 0; i < client_pool.size(); i++){

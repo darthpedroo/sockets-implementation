@@ -34,7 +34,6 @@ int handle_recieve(int client_fd){
     }
 }
 
-// Ejemplo con UNIX sockets
 int main(){
     // 1. Creamos el socket
     int client_fd = socket(AF_UNIX, SOCK_STREAM, 0);
